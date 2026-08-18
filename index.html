@@ -27,8 +27,18 @@
       property="og:description"
       content="A fast, browser-based infinite canvas for sketching visual ideas. Local-first, export anywhere."
     />
-    <meta property="og:image" content="/og-image.png" />
+    <!--
+      Absolute, not root-relative: the Open Graph spec requires a full URL, and
+      LinkedIn, Slack and WhatsApp all silently drop the image without one - so
+      a shared link renders as bare text. The dimensions let a crawler lay the
+      card out before it has finished fetching the file.
+    -->
+    <meta property="og:image" content="https://canvasforge-studio.vercel.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="The CanvasForge editor: canvas, layers panel and properties panel" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://canvasforge-studio.vercel.app/og-image.png" />
 
     <!--
       Names the site for crawlers. Without it a *.vercel.app subdomain tends to
