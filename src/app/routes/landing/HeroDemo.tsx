@@ -125,11 +125,20 @@ export function HeroDemo() {
           />
         </div>
 
-        {/* The hit area sits above the fill so the gradient stays a plain paint. */}
+        {/*
+          The hit area sits above the fill so the gradient stays a plain paint.
+
+          `touch-none` is what makes this work on a phone at all. Without it the
+          browser reads a drag that starts here as a page scroll: it claims the
+          gesture after two or three moves, fires `pointercancel`, and the
+          rectangle stops a few pixels from where it started. Only the rectangle
+          and its handles opt out - the rest of the stage keeps its default
+          behaviour, so the page can still be scrolled past the demo.
+        */}
         <div
           onPointerDown={onBodyPointerDown}
           role="presentation"
-          className={cn('absolute', active ? 'cursor-grabbing' : 'cursor-grab')}
+          className={cn('absolute touch-none', active ? 'cursor-grabbing' : 'cursor-grab')}
           style={{ left: rect.x, top: rect.y, width: rect.width, height: rect.height }}
         />
 
@@ -146,7 +155,14 @@ export function HeroDemo() {
               height: HANDLE_SIZE_PX,
               cursor,
             }}
-            className="border-accent bg-surface-1 absolute -translate-x-1/2 -translate-y-1/2 border"
+            /*
+              The visible handle stays 8px, but on a touch device an invisible
+              pseudo-element widens what a finger has to hit to 32px - an 8px
+              target is roughly a third of the 24px minimum a pointer that
+              imprecise needs. Scoped to `pointer-coarse` so a mouse keeps
+              hitting exactly what it is aimed at.
+            */
+            className="border-accent bg-surface-1 pointer-coarse:before:absolute pointer-coarse:before:-inset-3 pointer-coarse:before:content-[''] absolute -translate-x-1/2 -translate-y-1/2 border touch-none"
           />
         ))}
 
