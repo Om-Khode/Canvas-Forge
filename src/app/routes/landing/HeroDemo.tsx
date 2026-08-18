@@ -91,7 +91,16 @@ export function HeroDemo() {
   const { rect, active, onBodyPointerDown, onHandlePointerDown } = useDemoRect(stage, INITIAL);
 
   return (
-    <div className="flex h-full flex-col">
+    /*
+      `flex-1`, not `h-full` alone: the section around this is a flex column
+      whose height comes from `min-h`, and a `min-height` does not make a
+      parent's height definite - so `height: 100%` resolved to the content
+      height, the stage's `flex-1` had nothing to distribute, and a
+      0-height `overflow-hidden` stage clipped the rectangle out of existence
+      on every viewport below `lg`. Growing as a flex item works whether or not
+      the parent's height is definite.
+    */
+    <div className="flex h-full min-h-0 flex-1 flex-col">
       <div ref={attach} className="cf-dot-grid bg-canvas relative flex-1 overflow-hidden">
         <Backdrop />
 
@@ -141,9 +150,15 @@ export function HeroDemo() {
           />
         ))}
 
+        {/*
+          Anchored by its right edge to the rectangle's, so it stays legible when
+          the rectangle is near the right of a narrow stage. Anchoring the left
+          edge instead let the readout run past the stage and get clipped by
+          `overflow-hidden`, which on a phone wrapped it onto two lines.
+        */}
         <span
-          className="text-accent absolute font-mono text-[0.6875rem] tabular-nums"
-          style={{ left: rect.x + rect.width - 4, top: rect.y + rect.height + 8 }}
+          className="text-accent absolute -translate-x-full font-mono text-[0.6875rem] whitespace-nowrap tabular-nums"
+          style={{ left: rect.x + rect.width, top: rect.y + rect.height + 8 }}
         >
           {Math.round(rect.width)} × {Math.round(rect.height)}
         </span>
