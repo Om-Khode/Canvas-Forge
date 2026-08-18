@@ -1,0 +1,35 @@
+node_modules
+dist
+dist-ssr
+coverage
+.vite
+*.local
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Vercel
+.vercel
+
+# Playwright MCP session artifacts
+.playwright-mcp
+
+# Working notes, planning material and interview prep - kept outside the repo
+CLAUDE.md
+.claude/
+.superpowers/
+docs/superpowers/
+interview/
+resume/
+*Project Specification.md

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <title>CanvasForge - Infinite canvas design editor</title>
+    <meta
+      name="description"
+      content="A fast, browser-based infinite canvas for sketching visual ideas. Shapes, text, images, layers, and export - all local-first, nothing leaves your machine."
+    />
+    <meta name="theme-color" content="#0e0f11" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)" />
+
+    <!-- SVG first for anything modern; the ICO fallback is not shipped, so the
+         link is deliberately absent rather than pointing at a 404. -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="CanvasForge - Infinite canvas design editor" />
+    <meta
+      property="og:description"
+      content="A fast, browser-based infinite canvas for sketching visual ideas. Local-first, export anywhere."
+    />
+    <meta property="og:image" content="/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!--
+      Applied before first paint so a dark-mode user never sees a white flash.
+      Kept inline and tiny on purpose: any module-loaded alternative runs too late.
+    -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('canvasforge:theme');
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light';
+          document.documentElement.dataset.theme = theme;
+        } catch (_) {
+          document.documentElement.dataset.theme = 'light';
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

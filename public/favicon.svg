@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <defs>
+    <linearGradient id="forge" x1="0.15" y1="0" x2="0.85" y2="1">
+      <stop offset="0%" stop-color="#F2872F" />
+      <stop offset="100%" stop-color="#DC4F16" />
+    </linearGradient>
+    <clipPath id="frame">
+      <rect x="1" y="1" width="22" height="22" rx="3.6" />
+    </clipPath>
+  </defs>
+  <rect width="24" height="24" rx="5.2" fill="#121215" />
+  <g clip-path="url(#frame)">
+    <rect x="1" y="1" width="22" height="22" fill="#E8EAED" />
+    <polygon points="37.15,-12 -12,37.15 -12,40 40,40 40,-12" fill="url(#forge)" />
+    <polygon points="34.85,-12 -12,34.85 -12,37.15 37.15,-12" fill="#121215" />
+    <polygon points="25.15,-12 -12,25.15 -12,25.65 25.65,-12" fill="#121215" />
+  </g>
+</svg>
