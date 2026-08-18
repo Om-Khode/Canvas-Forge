@@ -17,7 +17,11 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
+    <link rel="canonical" href="https://canvasforge-studio.vercel.app/" />
+
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="CanvasForge" />
+    <meta property="og:url" content="https://canvasforge-studio.vercel.app/" />
     <meta property="og:title" content="CanvasForge - Infinite canvas design editor" />
     <meta
       property="og:description"
@@ -25,6 +29,21 @@
     />
     <meta property="og:image" content="/og-image.png" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!--
+      Names the site for crawlers. Without it a *.vercel.app subdomain tends to
+      be labelled with the host's name in search results, because the shared
+      apex is all a crawler has to go on.
+    -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "CanvasForge",
+        "alternateName": "CanvasForge Studio",
+        "url": "https://canvasforge-studio.vercel.app/"
+      }
+    </script>
 
     <!--
       Applied before first paint so a dark-mode user never sees a white flash.

@@ -5,7 +5,7 @@ An infinite-canvas design editor for the browser, built on a **hand-rolled Canva
 arrange them, undo anything, and export to PNG, SVG, or JSON. Everything runs and
 persists locally; there is no backend and no account.
 
-**Live demo:** _`<deployment URL>`_ &nbsp;·&nbsp; **Docs:** [`docs/`](docs/)
+**Live demo:** [canvasforge-studio.vercel.app](https://canvasforge-studio.vercel.app/) &nbsp;·&nbsp; **Docs:** [`docs/`](docs/)
 
 The interesting parts are the ones a library would normally own: the affine
 transform stack, hit-testing rotated shapes, the pointer state machine,
