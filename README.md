@@ -7,6 +7,8 @@ persists locally; there is no backend and no account.
 
 **Live demo:** [canvasforge-studio.vercel.app](https://canvasforge-studio.vercel.app/) &nbsp;·&nbsp; **Docs:** [`docs/`](docs/)
 
+[![CanvasForge editor - canvas, layers panel and properties panel](docs/images/editor.png)](https://canvasforge-studio.vercel.app/)
+
 The interesting parts are the ones a library would normally own: the affine
 transform stack, hit-testing rotated shapes, the pointer state machine,
 snapshot-based undo with structural sharing, and keeping a 60fps drag out of
